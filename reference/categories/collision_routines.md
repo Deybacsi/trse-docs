@@ -1,4 +1,4 @@
 # Collision routines
 
-- [IsOverlapping](../methods/IsOverlapping.md)
-- [IsOverlappingWH](../methods/IsOverlappingWH.md)
+- [IsOverlapping](../methods/isoverlapping.md)
+- [IsOverlappingWH](../methods/isoverlappingwh.md)

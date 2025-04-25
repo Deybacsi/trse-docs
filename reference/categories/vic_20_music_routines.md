@@ -1,5 +1,5 @@
 # Vic 20 music routines
 
-- [InitModPlayer](../methods/InitModPlayer.md)
-- [PlayMod](../methods/PlayMod.md)
-- [PlayVIC20Sid](../methods/PlayVIC20Sid.md)
+- [InitModPlayer](../methods/initmodplayer.md)
+- [PlayMod](../methods/playmod.md)
+- [PlayVIC20Sid](../methods/playvic20sid.md)

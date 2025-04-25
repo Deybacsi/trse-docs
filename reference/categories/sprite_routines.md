@@ -1,4 +1,4 @@
 # Sprite routines
 
-- [SpritePos](../methods/SpritePos.md)
-- [SetSpriteLoc](../methods/SetSpriteLoc.md)
+- [SpritePos](../methods/spritepos.md)
+- [SetSpriteLoc](../methods/setspriteloc.md)

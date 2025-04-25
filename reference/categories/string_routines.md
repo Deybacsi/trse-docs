@@ -1,10 +1,10 @@
 # String routines
 
-- [PrintString](../methods/PrintString.md)
-- [PrintNumber](../methods/PrintNumber.md)
-- [PrintDecimal](../methods/PrintDecimal.md)
-- [StrToLower](../methods/StrToLower.md)
-- [StrToUpper](../methods/StrToUpper.md)
-- [StrCmp](../methods/StrCmp.md)
-- [StrSplit](../methods/StrSplit.md)
-- [StrGetFromIndex](../methods/StrGetFromIndex.md)
+- [PrintString](../methods/printstring.md)
+- [PrintNumber](../methods/printnumber.md)
+- [PrintDecimal](../methods/printdecimal.md)
+- [StrToLower](../methods/strtolower.md)
+- [StrToUpper](../methods/strtoupper.md)
+- [StrCmp](../methods/strcmp.md)
+- [StrSplit](../methods/strsplit.md)
+- [StrGetFromIndex](../methods/strgetfromindex.md)

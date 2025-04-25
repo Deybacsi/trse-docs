@@ -1,6 +1,6 @@
 # Sound/music routines
 
-- [PlaySound](../methods/PlaySound.md)
-- [SetFrequency](../methods/SetFrequency.md)
-- [InitSid](../methods/InitSid.md)
-- [ClearSound](../methods/ClearSound.md)
+- [PlaySound](../methods/playsound.md)
+- [SetFrequency](../methods/setfrequency.md)
+- [InitSid](../methods/initsid.md)
+- [ClearSound](../methods/clearsound.md)

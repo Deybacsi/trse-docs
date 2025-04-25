@@ -1,5 +1,6 @@
 import os
 import re
+import shutil
 
 INPUT_FILE = "assets/methods_list.txt"
 OUTPUT_FOLDER = "../reference/methods"
@@ -9,18 +10,22 @@ REFERENCE_README = "../reference/README.md"
 def read_methods_list(filepath):
     """
     Reads the methods list from the input file.
+    Ensures all 5 columns (name, category, compatibility, params, URL) are handled.
     """
     methods = []
     with open(filepath, "r", encoding="utf-8") as file:
         for line in file:
             parts = line.strip().split("; ")
-            if len(parts) == 4:
-                methods.append({
-                    "name": parts[0],
-                    "category": parts[1],
-                    "compatibility": parts[2],
-                    "params": parts[3]
-                })
+            # Ensure exactly 5 columns, filling missing ones with empty strings
+            while len(parts) < 5:
+                parts.append('')
+            methods.append({
+                "name": parts[0],
+                "category": parts[1],
+                "compatibility": parts[2],
+                "params": parts[3],
+                "url": parts[4]  # Store the URL if present
+            })
     return methods
 
 def sanitize_filename(name):
@@ -28,6 +33,14 @@ def sanitize_filename(name):
     Converts a method or category name into a valid filename by replacing spaces and special characters.
     """
     return re.sub(r"[^\w\-]", "_", name.replace(" ", "_").lower())
+
+def clear_folder(folder_path):
+    """
+    Deletes all files and subfolders in the specified folder.
+    """
+    if os.path.exists(folder_path):
+        shutil.rmtree(folder_path)
+    os.makedirs(folder_path, exist_ok=True)
 
 def generate_method_file(method, output_folder, existing_files):
     """
@@ -54,6 +67,7 @@ def generate_method_file(method, output_folder, existing_files):
 **Compatibility:** {method['compatibility']}  
 
 **Reference Link:**  
+[Back to Categories](../categories/{sanitize_filename(method['category'])}.md)  
 [Back to Methods List](../../SUMMARY.md)
 """
     with open(filepath, "w", encoding="utf-8") as file:
@@ -76,7 +90,7 @@ def generate_category_files(methods, category_folder, method_folder):
         filepath = os.path.join(category_folder, filename)
         lines = [f"# {category}\n"]
         for method in methods:
-            method_file = f"{method_folder}/{method['name']}.md"
+            method_file = f"../methods/{sanitize_filename(method['name'])}.md"
             lines.append(f"- [{method['name']}]({method_file})")
         with open(filepath, "w", encoding="utf-8") as file:
             file.write("\n".join(lines))
@@ -88,7 +102,7 @@ def update_reference_readme(methods, categories, readme_path):
     lines = ["# Reference Documentation\n"]
     lines.append("## Methods\n")
     for method in methods:
-        method_file = f"methods/{method['name']}.md"
+        method_file = f"methods/{sanitize_filename(method['name'])}.md"
         lines.append(f"- [{method['name']}]({method_file})")
     lines.append("\n## Categories\n")
     for category in categories:
@@ -97,10 +111,19 @@ def update_reference_readme(methods, categories, readme_path):
     with open(readme_path, "w", encoding="utf-8") as file:
         file.write("\n".join(lines))
 
+def list_folder_contents(folder_path):
+    """
+    Lists the contents of a folder and counts the number of files.
+    """
+    if not os.path.exists(folder_path):
+        return [], 0
+    files = os.listdir(folder_path)
+    return files, len(files)
+
 def main():
-    # Ensure the output folders exist
-    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
-    os.makedirs(CATEGORY_FOLDER, exist_ok=True)
+    # Clear output folders
+    clear_folder(OUTPUT_FOLDER)
+    clear_folder(CATEGORY_FOLDER)
 
     # Read methods list
     methods = read_methods_list(INPUT_FILE)
@@ -127,9 +150,26 @@ def main():
         for name, error in skipped_methods:
             print(f"- {name}: {error}")
 
-    print(f"Generated {len(existing_files)} method files in '{OUTPUT_FOLDER}'.")
-    print(f"Generated category files in '{CATEGORY_FOLDER}'.")
-    print(f"Updated reference README.md at '{REFERENCE_README}'.")
+    # List folder contents and compare counts
+    method_files, method_count = list_folder_contents(OUTPUT_FOLDER)
+    category_files, category_count = list_folder_contents(CATEGORY_FOLDER)
+
+    print("\nFolder Contents:")
+    print(f"Methods Folder ({OUTPUT_FOLDER}): {method_count} files")
+    print(f"Categories Folder ({CATEGORY_FOLDER}): {category_count} files")
+
+    print("\nComparison:")
+    print(f"Total methods in list: {len(methods)}")
+    print(f"Total categories in list: {len(categories)}")
+    print(f"Generated method files: {method_count}")
+    print(f"Generated category files: {category_count}")
+
+    if method_count != len(methods):
+        print(f"Warning: Mismatch in method files ({method_count}) and methods in list ({len(methods)})!")
+    if category_count != len(categories):
+        print(f"Warning: Mismatch in category files ({category_count}) and categories in list ({len(categories)})!")
+
+    print(f"\nUpdated reference README.md at '{REFERENCE_README}'.")
 
 if __name__ == "__main__":
     main()

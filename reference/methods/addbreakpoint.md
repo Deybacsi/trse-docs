@@ -1,0 +1,9 @@
+# addbreakpoint
+
+**Parameters:**   
+**Category:** Debugger methods  
+**Compatibility:** ALL  
+
+**Reference Link:**  
+[Back to Categories](../categories/debugger_methods.md)  
+[Back to Methods List](../../SUMMARY.md)

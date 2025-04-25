@@ -5,4 +5,5 @@
 **Compatibility:** C64, MEGA65, C128, VIC20  
 
 **Reference Link:**  
+[Back to Categories](../categories/amiga_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

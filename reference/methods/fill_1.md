@@ -1,8 +1,9 @@
 # Fill
 
-**Parameters:** address, byte, byte;  
-**Category:** Memory routines  
-**Compatibility:** MOS6502, PX86  
+**Parameters:** address, long, long;  
+**Category:** Amiga routines  
+**Compatibility:** Amiga, ATARI520ST  
 
 **Reference Link:**  
+[Back to Categories](../categories/amiga_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

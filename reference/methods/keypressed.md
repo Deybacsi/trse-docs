@@ -1,8 +1,9 @@
-# Keypressed
+# keypressed
 
-**Parameters:** byte;  
-**Category:** Io ports  
-**Compatibility:** C64, MEGA65, PLUS4, C128, VIC20  
+**Parameters:** byte  
+**Category:** Atari ST routines  
+**Compatibility:** ATARI520ST  
 
 **Reference Link:**  
+[Back to Categories](../categories/atari_st_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

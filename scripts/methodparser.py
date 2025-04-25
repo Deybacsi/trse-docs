@@ -38,18 +38,7 @@ def decode_params(paramstr):
 def parse_methods(filepath):
     """
     Parses the syntax.txt file and extracts all methods.
-    Returns a list of dictionaries: name, category, compatibility, params.
-    If the folder in the filepath does not exist, it will be created automatically.
-    """
-    # Ensure the folder exists
-    folder = os.path.dirname(filepath)
-    if folder and folder != '' and not os.path.exists(folder):
-        os.makedirs(folder, exist_ok=True)
-    methods = []
-    current_section = ''
-    """
-    Parses the syntax.txt file and extracts all methods.
-    Returns a list of dictionaries: name, category, compatibility, params.
+    Ensures all 5 columns (name, category, compatibility, params, URL) are handled.
     """
     methods = []
     current_section = ''
@@ -64,16 +53,19 @@ def parse_methods(filepath):
             # Only method lines (m; ...)
             if line.startswith('m;') or line.startswith('M;'):
                 parts = line.split(';')
-                if len(parts) < 3:
-                    continue
+                # Ensure exactly 5 columns, filling missing ones with empty strings
+                while len(parts) < 5:
+                    parts.append('')
                 name = parts[1].strip()
                 compatibility = parts[2].strip()
-                params = parts[3].strip() if len(parts) > 3 else ''
+                params = parts[3].strip()
+                url = parts[4].strip()
                 methods.append({
                     'name': name,
                     'category': current_section,
                     'compatibility': compatibility,
-                    'params': decode_params(params)
+                    'params': decode_params(params),
+                    'url': url  # Store the URL if present
                 })
     return methods
 
