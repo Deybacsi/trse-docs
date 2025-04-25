@@ -1,0 +1,17 @@
+# Other routines
+
+- [Wait](../methods/Wait.md)
+- [Jammer](../methods/Jammer.md)
+- [FLD](../methods/FLD.md)
+- [TransformColors](../methods/TransformColors.md)
+- [Call](../methods/Call.md)
+- [Loop](../methods/Loop.md)
+- [ReturnValue](../methods/ReturnValue.md)
+- [Set2MhzMode](../methods/Set2MhzMode.md)
+- [Set1MhzMode](../methods/Set1MhzMode.md)
+- [RightBitShift](../methods/RightBitShift.md)
+- [LeftBitShift](../methods/LeftBitShift.md)
+- [BcdAdd](../methods/BcdAdd.md)
+- [BcdCompare](../methods/BcdCompare.md)
+- [BcdIsEqual](../methods/BcdIsEqual.md)
+- [BcdSub](../methods/BcdSub.md)

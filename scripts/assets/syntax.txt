@@ -1,0 +1,1591 @@
+#
+#    
+#    M E T H O D S 
+#
+#
+# format : method name, compatibility list, parameters
+# s = string
+# b = byte
+# i = integer
+# a = address
+# n = pure number
+# ib = integer or byte
+# p = procedure
+# ai = address OR integer
+
+# debugger methods
+
+m; addbreakpoint; ALL;
+m; disassemble; ALL;
+
+
+# init functions
+m; initrandom; C64, MEGA65, X16,PLUS4, C128, APPLEII, SNES, ORIC ;
+m; initrandom256; C64, MEGA65, PLUS4, C128, VIC20, APPLEII, SNES, ORIC ;
+m; initsinetable; MOS6502;
+m; DefineScreen; MOS6502 ;
+m; SetColorMemoryAddress; VIC20 ;
+m; initmoveto; C64, MEGA65, PLUS4, X16,C128, VIC20, PET,  NES ;
+m; initprintdecimal; MOS6502 ;
+m; initeightbitmul; MOS6502 ;
+m; init16x8mul; MOS6502 ;
+m; init16x8div; MOS6502 ;
+m; init8x8div; MOS6502 ;
+m; initprintstring; C64, MEGA65, PLUS4, C128  ;
+m; initjoystick; C64, MEGA65, PLUS4, C128, VIC20  ;
+m; initatan2; MOS6502 ;
+m; initdrawtextbox; MOS6052 ;
+m; initJoy1; C64, MEGA65, VIC20 ;
+m; initJoy2; C64, MEGA65 ;
+m; initBcd; MOS6502 ;
+m; initGetKey; C64, MEGA65, C128 ;
+
+
+
+# ************** Vic20 Bitmap Mode ROUTINES
+
+# *** INIT METHODS
+m; initVbm; VIC20 ;
+
+# *** CALL METHODS
+
+m; vbmSetDisplayMode; VIC20 ; n
+m; vbmResetDisplayMode; VIC20;
+m; vbmSetColumn; VIC20 ; b
+m; vbmSetPosition1; VIC20; b,b
+m; vbmSetPosition2; VIC20; b,b
+m; vbmSetPosition4; VIC20; b,b
+m; vbmNextColumn; VIC20;
+m; vbmDebug; VIC20 ; n
+
+m; vbmClear; VIC20 ; b
+m; vbmClearColor; VIC20; b
+
+m; vbmDrawTile; VIC20 ; a
+m; vbmDrawTileO; VIC20 ; a
+m; vbmDrawTileE; VIC20 ; a
+m; vbmClearTile; VIC20 ; a
+m; vbmClearBlock; VIC20 ;
+
+m; vbmDrawTileMap; VIC20 ; a,a,b,b,b,b
+m; vbmDrawTileMapO; VIC20 ; a,a,b,b,b,b
+m; vbmDrawTileMapE; VIC20 ; a,a,b,b,b,b
+m; vbmClearTileMap; VIC20 ; a,a,b,b,b,b
+
+m; vbmTestPixel; VIC20 ; b,b
+m; vbmTestPixel2; VIC20 ; b,b
+m; vbmTestTilePixel; VIC20 ; a,b,b
+m; vbmTestTilePixel2; VIC20 ; a,b,b
+
+m; vbmDrawDot; VIC20 ; b,b
+m; vbmClearDot; VIC20 ; b,b
+m; vbmDrawDotE; VIC20 ; b,b
+m; vbmDrawBlot; VIC20 ; b,b
+m; vbmClearBlot; VIC20 ; b,b
+m; vbmDrawBlotE; VIC20 ; b,b
+
+m; vbmScrollLeft; VIC20 ;
+m; vbmScrollRight; VIC20 ;
+m; vbmScrollFixTop; VIC20 ;
+m; vbmScrollFixBottom; VIC20 ;
+
+m; vbmInitScreenShiftLeft; VIC20; b
+m; vbmInitScreenShiftRight; VIC20; b
+m; vbmScreenShiftLeft; VIC20 ; b, b
+m; vbmScreenShiftRight; VIC20 ; b, b
+
+m; vbmSpriteStitch; VIC20 ; a, a, b
+m; vbmSpriteShiftR; VIC20 ; a, a, b, b, a
+m; vbmSpriteShiftL; VIC20 ; a, a, b, b, a
+m; vbmSpriteShiftSR; VIC20 ; a, a, b, b, a
+m; vbmSpriteShiftSL; VIC20 ; a, a, b, b, a
+
+m; vbmDrawSprite8; VIC20 ; a, a
+m; vbmDrawSprite8E; VIC20 ; a, a
+m; vbmClearSprite8; VIC20 ; a, a
+
+m; vbmDrawSprite16; VIC20 ; a, a, a
+m; vbmDrawSprite16E; VIC20 ; a, a, a
+m; vbmClearSprite16; VIC20 ; a, a, a
+
+m; vbmDrawSpriteSlice; VIC20; a, b, b
+m; vbmDrawSpriteSliceE; VIC20; a, b, b
+m; vbmClearSpriteSlice; VIC20; a, b, b
+
+m; vbmDrawText; VIC20; a, a, b, b, b
+m; vbmDrawTextO; VIC20; a, a, b, b, b
+m; vbmDrawTextE; VIC20; a, a, b, b, b
+m; vbmClearText; VIC20; a, a, b, b, b
+
+m; vbmDrawSmallTextO; VIC20; a, a, b, b, b
+m; vbmDrawSmallTextE; VIC20; a, a, b, b, b
+m; vbmClearSmallText; VIC20; a, a, b, b, b
+
+m; vbmDrawBCD; VIC20; a, a, b, b, b
+m; vbmDrawSmallBCD; VIC20; a, a, b, b, b
+m; vbmDrawSmallBCDO; VIC20; a, a, b, b, b
+
+m; vbmCopyToBuffer; VIC20 ; a,b,b
+m; vbmCopyFromBuffer; VIC20 ; a,b,b
+
+m; vbmDrawSprite; VIC20 ; a, a
+m; vbmDrawSpriteE; VIC20 ; a, a
+m; vbmClearSprite; VIC20 ; a, a
+
+m; vbmDrawSprite2; VIC20 ; a, a, a
+m; vbmDrawSprite2E; VIC20 ; a, a, a
+m; vbmClearSprite2; VIC20 ; a, a, a
+
+
+
+
+# ************** Z80, Z180 ROUTINES
+
+
+#m; ToggleBit; GAMEBOY,Z80, Z180 ; a,b,b
+#m; GetBit; GAMEBOY,Z80, Z180 ; a,b
+m; fill ; GAMEBOY,Z80, Z180; a,b,i
+m; MemCpy; GAMEBOY,Z80, Z180 ; a,a,i
+m; MemCpyCont; GAMEBOY,Z80, Z180 ; i
+m; MemCpyOnHBLank; GAMEBOY, SPECTRUM, MSX,  TIKI100; a,a,i
+m; MemCpyOnHBLank4; GAMEBOY, SPECTRUM, MSX,  TIKI100; a,a,i
+#m; MemCpyOnHBLankExp; GAMEBOY, SPECTRUM, MSX,  TIKI100; a,a,i
+m; EnableVBlank; GAMEBOY, SPECTRUM, MSX,  TIKI100;
+m; EnableTimer; GAMEBOY, SPECTRUM, MSX,  TIKI100;
+m; Halt; GAMEBOY, SPECTRUM, MSX,  TIKI100;
+m; Loop; GAMEBOY, AMSTRADCPC, VZ200 , Z80, Z180;
+m; SetSprite ; GAMEBOY, SPECTRUM, MSX,  TIKI100; a,b,b,b,b
+m; InitSprite ; GAMEBOY, SPECTRUM, MSX,  TIKI100; a,b,b,b,b
+m; InitSpriteFromData ; GAMEBOY, SPECTRUM, MSX,  TIKI100; a,a,b,b,b,b
+m; UpdateMusic; GAMEBOY, SPECTRUM, MSX,  TIKI100;
+m; LoadMusic; GAMEBOY, SPECTRUM, MSX,  TIKI100; s,b
+m; InitVBlank; GAMEBOY, SPECTRUM, MSX,  TIKI100; p
+m; InitTimer; GAMEBOY, SPECTRUM, MSX,  TIKI100; p
+m; Push; GAMEBOY, Z80, Z180;
+m; POP; GAMEBOY, Z80, Z180;
+m; waitforhblank; GAMEBOY, SPECTRUM, MSX,  TIKI100;
+m; joypad; GAMEBOY, SPECTRUM, MSX,  TIKI100; a,a
+m; RasterIRQ; AMSTRADCPC, VZ200 ; p
+
+
+c; VRAM ; GAMEBOY; a; $8000
+c; VRAM_CHARSET ; GAMEBOY ; a; $9000
+c; SCREEN0 ; GAMEBOY; a; $9800
+c; SCREEN1 ; GAMEBOY; a; $9C00
+c; BACKGROUND_PALETTE; GAMEBOY; a; $FF47
+c; OBJECT0_PALETTE; GAMEBOY; a;$FF48
+c; OBJECT1_PALETTE; GAMEBOY ; a;$FF49
+c; CURRENT_BANK ; GAMEBOY; a; $2000
+c; SPRITE_FLIP_X; GAMEBOY; b; %00100000
+c; SPRITE_FLIP_Y; GAMEBOY; b; %01000000
+c; SCROLLY ; GAMEBOY; a ; $FF42
+c; SCROLLX ; GAMEBOY; a ; $FF43
+c; DMA; GAMEBOY; a; $FF80
+c; LCDCSTAT; GAMEBOY; a; $FF41
+c; WINDOWY; GAMEBOY; a; $FF4A
+c; WINDOWX; GAMEBOY; a; $FF4B
+c; PAD_RIGHT; GAMEBOY; b; 16
+c; PAD_LEFT; GAMEBOY; b; 32
+c; PAD_DOWN; GAMEBOY; b; 64
+c; PAD_UP; GAMEBOY; b; 128
+c; PAD_BUTTON_A; GAMEBOY; b; 1
+c; PAD_BUTTON_B; GAMEBOY; b; 2
+c; PAD_BUTTON_START; GAMEBOY; b; 8
+c; PAD_BUTTON_SELECT; GAMEBOY; b; 4
+
+
+# ************************** SPECTRUM, MSX,  TIKI100
+
+c; VRAM ; SPECTRUM, MSX,  TIKI100; a; $4000
+c; CRAM ; SPECTRUM, MSX,  TIKI100; a; $5800
+
+
+
+
+
+
+
+
+# *********** ATARI ST ROUTINES
+
+m; InitGraphics; ATARI520ST;
+m; HLine; ATARI520ST; i,i,i,i
+
+m; GetScreen; ATARI520ST; a
+m; WaitForKeypress; ATARI520ST;
+m; keypressed; ATARI520ST; b
+m; setlores; ATARI520ST;
+m; sethires; ATARI520ST;
+m; setmedres; ATARI520ST;
+m; InitMusic; ATARI520ST; a
+m; UpdateMusic; ATARI520ST;
+m; SetIRQ;ATARI520ST; p, a
+m; SetTimerIRQ; ATARI520ST; p, b
+
+c; palette_start; ATARI520ST; a; $ffff8240
+c; sc_key_space_pressed; ATARI520ST; b; #$39
+c; keyboard_input; ATARI520ST; a; $fffc02
+c; irq_verticalblank; ATARI520ST; a; $70
+c; irq_horizontalblank; ATARI520ST; a; $68
+
+# ************** Amiga ROUTINES
+
+# *** INIT METHODS
+
+m; InitMatmul3x3; Amiga, ATARI520ST;
+m; InitPoly; Amiga, ATARI520ST;
+m; InitLine; Amiga, ATARI520ST;
+m; InitMatmulVec; Amiga, ATARI520ST;
+m; InitMatmulVecNormalZ; Amiga, ATARI520ST;
+m; InitProjectToScreen; Amiga, ATARI520ST;
+m; InitP61PlayerInternal; Amiga, ATARI520ST;
+m; InitProjectAllVertices; Amiga, ATARI520ST;
+
+# ** CALL METHODS
+
+m; InitP61Module; Amiga;a
+m; PlayP61Module; Amiga;
+m; Poke8; Amiga, ATARI520ST ; a,i,b
+m; Poke16; Amiga, ATARI520ST ; a,i,i
+m; Peek16; M68000 ; a,i
+m; Peek8; M68000 ; a,i
+m; Poke32; Amiga, ATARI520ST ; a,i,l
+m; WaitVerticalBlank; Amiga, ATARI520ST;
+m; SetCopperList32; Amiga; a, a
+m; ApplyCopperList; Amiga;
+m; memcpy; Amiga, ATARI520ST; a, l,a,l, l,i
+m; memcpyunroll; Amiga, ATARI520ST; a, l,a,l, l,i
+m; setpalette; Amiga, ATARI520ST; a, a, l
+m; ablit; Amiga; a,a,i, i,i,i,i,l,i,i,i
+m; fblit; Amiga; a,a,i, i,i,i,i,l,i,i,i
+m; getKey; C64, MEGA65, C128, VIC20;
+m; EnableInterrupt; Amiga, ATARI520ST;i
+m; pusha; Amiga, ATARI520ST ;
+m; popa; Amiga, ATARI520ST ;
+m; toPointer;Amiga, ATARI520ST;l
+m; swap; Amiga, ATARI520ST; a,a,b
+
+
+m; memcpyunroll16; M6809; a, a, i
+
+m; InitCustomCopperList; Amiga;
+m; EndCustomCopperList; Amiga;
+m; AddCopperCommand; Amiga, ATARI520ST; i,i
+m; SkipCopperCommands; Amiga; i
+m; DrawLine; Amiga; i,i,i,i, l, i
+m; Fill; Amiga, ATARI520ST ; a, l, l
+m; MatMul3x3; Amiga, ATARI520ST; a,a,a
+m; SetRotationX; Amiga, ATARI520ST; a, l,l
+m; SetRotationY; Amiga, ATARI520ST; a, l,l
+m; SetRotationZ; Amiga, ATARI520ST; a, l,l
+m; SetIdentity; Amiga, ATARI520ST; a
+m; MatMulVec; Amiga, ATARI520ST; a,a,a,i
+m; MatMulVecNormalZ; Amiga, ATARI520ST; a,a,a,i
+m; MatMulVecNormal; Amiga, ATARI520ST; a,a,a,i
+m; ProjectToScreen; Amiga, ATARI520ST; a,i,l,l
+m; WaitForBlitter; Amiga;
+m; VBIRQ;Amiga; p
+m; DisableInterrupts; Amiga;
+
+m; ProjectAllVertices; Amiga, ATARI520ST; a,a,l,l,l,l
+
+#Memory routines
+m; Poke; MOS6502, Z80, Z180, M6809 ; a,b,b
+m; Peek; MOS6502, Z80, Z180, M6809  ; a,b
+m; ToggleBit; MOS6502, M6809 ; a,b,b
+m; GetBit; MOS6502, M6809 ; a,b
+
+m; EnableAllRam; C64, MEGA65, PLUS4  ;
+m; MemCpy; MOS6502 ; a,b,a,b
+m; MemCpyFast; MOS6502, Z80, Z180, PX86 ; a,b,a,b
+m; MemCpyUnroll; MOS6502 ; a,b,a,b
+m; MemCpyUnrollReverse; MOS6502 ; a,b,a,b
+m; BlockMemCpy; MOS6502 ; a,a,n
+m; Inc; MOS6502, Z80, Z180, PX86, M6809 ; a
+m; IncRange; MOS6502 ; b,b,b
+m; DecRange; MOS6502 ; b,b,b
+m; Dec; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800, AMSTRADCPC, VZ200 , TIKI100, SPECTRUM, MSX, Z80, Z180, GAMEBOY, PX86, M6809 ; a
+m; Fill; MOS6502, PX86 ; a, b, b
+m; FillFast; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800,PX86 ; a, b, b
+m; SetMemoryConfig ; C64, MEGA65,  VIC20, PET,  NES ; b,b,b
+m; CopyHalfScreen; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES ; a,a,b,b,n
+m; CopyFullScreen; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES ; a,a
+m; Lo; MOS6502, Z80, Z180, M6809; a
+m; Hi; MOS6502, Z80, Z180, M6809; a
+m; bankbyte; MOS6502, WDC65C02, WDC65C816, CUSTOM; a
+m; ToPointer;  MOS6502; b,b
+#m; ProcedureToPointer;  ALL; p
+m; int2ptr;  MOS6502; i
+m; CreateInteger; MOS6502; b,b
+m; CreatePointer; MOS6502; b,b
+m; outportb; X86; i, b
+m; inportb; X86; i
+m; genint; X86; i
+
+M; CopyBytesShift; X16,C64, MEGA65, PLUS4,C128, VIC20, PET,  NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a,a,b,b,n
+
+m; CreateAddressTable; X16,C64, MEGA65, PLUS4,C128, VIC20, PET, NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a,n,b,b
+m; AddressTable; X16,C64, MEGA65, PLUS4,C128, VIC20, PET, NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a,b,b
+
+m; Nop; X16,C128, C64, MEGA65, PLUS4, VIC20, PET, NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800, AMSTRADCPC, VZ200 , X86, M1ARM, AMIGA, ATARI520ST, M6809, Z80, Z180; n
+
+m; SetMemoryConfig ; C128 ; n,n,n,n,n
+m; SetMemoryConfig ; PLUS4 ; b
+
+
+m; Decrunch; C64, MEGA65, PLUS4, C128, VIC20, PET, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800 ; a
+m; DecrunchFromIndex; C64, MEGA65, PLUS4, C128, VIC20, PET, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800 ; a,b
+
+#m; IncZP; C64, MEGA65, PLUS4, C128, VIC20, PET,  NES ; a, b
+#m; DecZP; C64, MEGA65, PLUS4, C128, VIC20, PET,  NES ; a, b
+
+# Charset routines
+
+m; CopyCharsetFromRom; C64, PLUS4, C128 ; a
+m; SetCharsetLocation; C64,  PLUS4, C128, VIC20, MEGA65; n
+m; SetScreenLocation; C64,  PLUS4, C128, VIC20, MEGA65; n
+m; SetCharsetAndScreenLocation; C64, C128, MEGA65; n,n
+m; SetBitmapLocation; C128; n
+
+
+
+
+
+
+
+
+
+
+#
+#
+#
+# C O L E C O   S T U F F
+#
+
+c;VRAM_SPRGEN;COLECO; a;$3800
+
+c;VRAM_PATTERN;COLECO;a;$0000
+c;VRAM_NAME;COLECO;a;$1800
+c;VRAM_SPRATTR;COLECO;a;$1B00
+c;VRAM_COLOR;COLECO;a;$2000
+
+
+
+
+
+
+
+# **********************
+#
+# NES stuff:
+#
+# **********************
+m; LoadPalette; NES; a
+m; ReadInput; NES;
+m; PPUBackgroundDump; NES; a,b,b
+m; PPUAttributeDump; NES; a,b,b
+m; PPUSingle; NES; b,b,b
+m; PPUPoint; NES; b,b
+m; PPUPointI; NES; i
+m; PPUWrite; NES; b
+m; PPURead; NES; b,b
+m; LoadSong; NES; b
+m; PlaySong; NES;
+m; PPUDrawColumn; NES; a,b,b,b
+m; ToggleNMI; NES; n
+m; ToggleVRAM32Inc; NES; n
+m; ToggleSpriteTableAddress; NES; n
+m; ToggleBackgroundTableAddress; NES; n
+m; SetNameTable; NES; b
+m; ToggleGreyscale; NES; n
+m; ToggleSprites; NES; n
+m; ToggleBackground; NES; n
+m; ToggleBorderSprites; NES; n
+m; ToggleBorderBackground; NES; n
+m; SetSpriteLocation; NES; b
+m; Split; NES;
+m; Scroll; NES; b,b
+m; ToggleSpriteSize; NES; n
+
+# IO
+
+m; KrillLoad; C64, MEGA65, PLUS4; a
+m; KrillLoadCompressed; C64, MEGA65, PLUS4; a
+m; InitKrill; C64, MEGA65, PLUS4;
+
+# Screen routines
+
+m; Tile; C64, MEGA65, PLUS4, C128, VIC20, PET ; a,a,a,a,b,n
+m; MoveTo; C64, MEGA65, PLUS4, C128, VIC20, NES,PET ; b,b,b
+m; ScrollY; C64, MEGA65, PLUS4, C128 ; b
+m; ScrollX; C64, MEGA65, PLUS4, C128 ; b
+m; hideborderx; C64, MEGA65, PLUS4, C128 ; b
+m; hidebordery; C64, MEGA65, PLUS4, C128 ; b
+m; ClearScreen; C64, MEGA65, PLUS4, C128, VIC20, NES, PET; b, a
+m; ClearBitmap; C64, MEGA65, PLUS4, C128; a, b
+m; SetMultiColorMode; C64, MEGA65, C128;
+m; SetRegularColorMode; C64, MEGA65,  C128;
+m; SetBitmapMode; C64, MEGA65,  C128;
+m; SetTextMode; C64, MEGA65,  C128;
+m; SetBank; C64, MEGA65, C128; b
+m; ScreenOff; C64, MEGA65, PLUS4, C128;
+m; ScreenOn; C64, MEGA65, PLUS4, C128;
+m; CopyImageColorData; C64, MEGA65, PLUS4, C128; a,n
+# DrawTextBox params: screenaddrtbl,petsciiarray,column,row,width,height
+m; DrawTextBox; C64, MEGA65, PLUS4, C128, NES, VIC20, PET; a,a,b,b,b,b
+# DrawColorTextBox params: screenaddrtbl,coloraddrtbl,petsciiarray,column,row,width,height,color
+m; DrawColorTextBox; C64, MEGA65, PLUS4, C128, NES, VIC20, PET; a,a,a,b,b,b,b,b
+m; BcdPrint; C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, OK64 ; a,n
+
+# String routines
+
+m; PrintString; C64, MEGA65, PLUS4, C128, VIC20, PET, X16; s,b,b
+m; PrintNumber; C64, MEGA65, PLUS4, C128, VIC20, PET,  X16; b
+m; PrintDecimal; C64, MEGA65, PLUS4, C128, VIC20, PET,  X16; i,n
+m; StrToLower; C64, MEGA65, PLUS4, C128, VIC20, PET, X16, OK64; a
+m; StrToUpper; C64, MEGA65, PLUS4, C128, VIC20, PET, X16, OK64; a
+m; StrCmp; C64, MEGA65, PLUS4, C128, VIC20, PET, X16, OK64; s, s
+m; StrSplit; C64, MEGA65, PLUS4, C128, VIC20, PET, X16, OK64;a,a,b
+m; StrGetFromIndex;C64, MEGA65, PLUS4, C128, VIC20, PET, X16, OK64; a, b
+
+# Sprite routines
+
+m; SpritePos; C64, MEGA65, PLUS4, C128 ; ib,b,b
+m; SetSpriteLoc; C64, PLUS4, C128,  MEGA65; b,b,n
+
+# Sound/Music routines
+
+
+
+
+m; PlaySound; C64, MEGA65, PLUS4, C128, OK64; b,b,b,b,b,b,b
+m; SetFrequency; C64, MEGA65, PLUS4, C128, OK64; b,b
+m; InitSid; C64, MEGA65, PLUS4, C128,VIC20, OK64; a
+m; ClearSound; C64, MEGA65, PLUS4, C128, OK64;
+
+# VIC 20 Music routines
+m; InitModPlayer; VIC20; b,b
+m; PlayMod; VIC20;
+m; PlayVIC20Sid; VIC20; a
+
+
+# Math routines
+
+
+m; mod; Z80, Z180, GBZ80, Z180, M6809; i,b
+
+m; Atan2 ; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES , OK64, BBCM, ACORN, ATARI800 ; b,b,b,b
+m; Sqrt ; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, OK64, BBCM, ACORN, ATARI800  ; ib
+m; Swap; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; b,b
+m; Abs;  MOS6502, M68000, M6809, Z80;ib
+m; Rand; C64, MEGA65, PLUS4, C128 ; b,b,b
+m; Random; X16,C64, MEGA65, PLUS4, C128, VIC20, PET, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800;
+m; mod; X16,C64, MEGA65, PLUS4, C128, VIC20, NES, OK64, PET, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; ib,b
+
+m; mod16; X16,C64, MEGA65, PLUS4, C128, VIC20, NES, OK64, PET, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; ib,b
+m; max; X16,C64, MEGA65, PLUS4, C128, VIC20, NES, OK64, PET, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; b,b
+m; min; X16,C64, MEGA65, PLUS4, C128, VIC20, NES, OK64, PET, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; b,b
+# m; muls8x8; X16,C64, MEGA65, PLUS4, C128, VIC20, NES, OK64, PET, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; b,b
+
+
+m; mod; M68000; i,i
+
+# Collision routines
+m; IsOverlapping; MOS6502; b,b,b,b,b
+m; IsOverlappingWH; MOS6502; b,b,b,b,b,b
+
+# Other routines
+
+m; Wait; MOS6502, Z80, Z180 ; b
+m; Jammer; C64, MEGA65, PLUS4, C128  ; n,n
+m; FLD ; C64, MEGA65, PLUS4, C128 ; b,n
+m; TransformColors; C64, MEGA65, PLUS4, C128; a,a
+m; Call; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800, MSX, SPECTRUM, GAMEBOY, AMSTRADCPC, VZ200, Z80, Z180 ; a
+m; Loop; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800, Amiga, ATARI520ST, PX86, Z80, Z180, M6809;
+# m; Return;  X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, Amiga, ATARI520ST, OK64, X86, M1ARM,GAMEBOY, SPECTRUM, MSX,  TIKI100, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800, AMSTRADCPC, VZ200 ;
+m; ReturnValue;  X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, Amiga, ATARI520ST, OK64, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800, AMSTRADCPC, VZ200, Z80, Z180 ; b
+m; Set2MhzMode; C128;
+m; Set1MhzMode; C128;
+m; RightBitShift;MOS6502; a, n
+m; LeftBitShift;MOS6502; a, n
+m; BcdAdd; MOS6502 ; a, a, n
+m; BcdCompare; MOS6502 ; a, a, n
+m; BcdIsEqual; MOS6502 ; a, a, n
+m; BcdSub; MOS6502 ; a, a, n
+
+# IO ports
+
+m; Joystick; C64, MEGA65, PLUS4, C128, VIC20, OK64; n
+m; Keypressed; C64, MEGA65, PLUS4, C128, VIC20; b
+m; ReadJoy1; C64, MEGA65, VIC20;
+m; ReadJoy2; C64, MEGA65;
+
+# IRQ routines
+
+m; NmiIRQ; MOS6502 ; p
+m; EnableRasterIRQ; C64, MEGA65, PLUS4, C128, X16;
+m; StartIRQ; MOS6502; b
+m; StartIRQWedge; C64, MEGA65, PLUS4, C128; b
+m; StartRasterChain; C64, MEGA65, PLUS4, C128; p,b,n
+m; CloseIRQ; MOS6502, M68000;
+m; CloseIRQWedge; C64, MEGA65, PLUS4, C128;
+m; EnableIRQ; MOS6502, X16, MEGA65;
+m; PreventIRQ; MOS6502, X16, MEGA65;
+m; DisableCIAInterrupts; C64, MEGA65, PLUS4, C128,X16;
+m; RasterIRQ; C64, MEGA65, PLUS4, C128; p,b,n
+m; RasterIRQ; BBCM, ACORN, ATARI800; p
+m; RasterIRQWedge; C64, MEGA65, PLUS4, C128 ; p,b,n
+m; ReturnInterrupt; MOS6502;
+
+
+
+
+
+
+m; WaitForRaster; C64, MEGA65, PLUS4, C128, VIC20, OK64, GAMEBOY, SPECTRUM, MSX,  TIKI100; b
+m; WaitNoRaster; C64, MEGA65, PLUS4, C128, VIC20, OK64, GAMEBOY, SPECTRUM, MSX,  TIKI100; b
+m; WaitForVerticalBlank; C64, MEGA65, C128, X86, M1ARM, GAMEBOY, MSX,  TIKI100;
+
+
+m; DisableVIC20IRQ; VIC20;
+#m; StartVIAIRQ; VIC20;
+#m; CloseVIAIRQ; VIC20;
+m; VIAIRQ; VIC20; p,b,b
+m; VIARasterIRQ; VIC20; p,b,b
+
+
+##############################################################################
+########################### X86, M1ARM METHODS #######################################
+##############################################################################
+
+m; init_cga_scanlines; X86, M1ARM;
+m; init_playnote; X86, M1ARM;
+m; init_drawline_cga; X86, M1ARM;
+m; init_drawline_cga; X86, M1ARM;
+m; init_keyboard_irq; X86, M1ARM;
+m; SetScreenMode;X86, M1ARM;b
+m; VGAClearScreen32; X86, M1ARM;b
+m; VGAClearScreen16; X86, M1ARM;b
+m; ScrollX; X86, M1ARM; b
+m; mod; PX86, M1ARM; i,i
+
+m; SetPalette; X86, M1ARM; b,b,b,b
+m; SetPixel; X86, M1ARM; a, i,i,b
+m; SetPixelCGA; X86, M1ARM; a, i,i,b
+m; memcpy8; PX86, M1ARM; a,a,i
+m; memcpy16; PX86, M1ARM; a,a,i
+#m; memcpy16unroll; PX86, M1ARM; a,a,i
+m; memcpy32; PX86, M1ARM; a,a,i
+m; SetCgaPalette; X86, M1ARM; i
+m; toPointer;PX86, M1ARM;i,i
+m; ptr;PX86, M1ARM;i,i
+m; hi; PX86, M1ARM;a
+m; lo; PX86, M1ARM;a
+m; nosound; X86, M1ARM;
+m; FillW; PX86, M1ARM; a, i, i
+m; ReadKey; X86, M1ARM;
+m; KeyPressed; X86, M1ARM;
+m; DrawLineCGA; X86, M1ARM; a, i,i,i,i, b
+m; InstallKeyboardIRQ; X86, M1ARM;
+m; SetInterrupt; PX86, M1ARM; b, p
+m; StartIRQ; PX86, M1ARM;
+m; CloseIRQ; PX86, M1ARM;
+
+m; playnote; X86, M1ARM; b
+
+c; CGA_COLOR0; X86, M1ARM; b; 0
+c; CGA_COLOR1; X86, M1ARM; b; $55
+c; CGA_COLOR2; X86, M1ARM; b; $AA
+c; CGA_COLOR3; X86, M1ARM; b; $FF
+
+c; MODE_TEXT40_GREYSCALE; X86, M1ARM; b;$0
+c; MODE_TEXT40; X86, M1ARM; b; $1
+c; MODE_TEXT80_GREYSCALE; X86, M1ARM; b; $1
+c; MODE_TEXT80; X86, M1ARM; b; $3
+c; MODE_CGA_320x200; X86, M1ARM; b; $4
+c; MODE_CGA_640x200; X86, M1ARM; b; $6
+c; MODE_EGA_320x200; X86, M1ARM; b; $0D
+c; MODE_EGA_640x200; X86, M1ARM; b; $0E
+c; MODE_VGA_640x480; X86, M1ARM; b; $12
+c; MODE_VGA_320x200; X86, M1ARM; b; $13
+
+c; SCREEN_CGA; X86, M1ARM; a; $B800
+c; SCREEN_TEXT; X86, M1ARM; a; $B800
+c; SCREEN_EGA; X86, M1ARM; a; $B800
+c; SCREEN_VGA; X86, M1ARM; a; $A000
+
+c; NOTE_C0 ; X86, M1ARM;b; 0
+c; NOTE_Cf0 ; X86, M1ARM;b; 1
+c; NOTE_D0 ; X86, M1ARM;b; 2
+c; NOTE_Df0 ; X86, M1ARM;b; 3
+c; NOTE_E0 ; X86, M1ARM; b;4
+c; NOTE_F0 ; X86, M1ARM;b; 5
+c; NOTE_Ff0 ; X86, M1ARM;b; 6
+c; NOTE_G0 ; X86, M1ARM;b; 7
+c; NOTE_Gf0 ; X86, M1ARM;b; 8
+c; NOTE_A0 ; X86, M1ARM;b; 9
+c; NOTE_Af0 ; X86, M1ARM;b; 10
+c; NOTE_B0 ; X86, M1ARM;b; 11
+
+c; NOTE_C1 ; X86, M1ARM; b;12
+c; NOTE_Cf1 ; X86, M1ARM;b; 13
+c; NOTE_D1 ; X86, M1ARM;b; 14
+c; NOTE_Df1 ; X86, M1ARM;b; 15
+c; NOTE_E1 ; X86, M1ARM; b;16
+c; NOTE_F1 ; X86, M1ARM;b; 17
+c; NOTE_Ff1 ; X86, M1ARM;b; 18
+c; NOTE_G1 ; X86, M1ARM;b; 19
+c; NOTE_Gf1 ; X86, M1ARM;b; 20
+c; NOTE_A1 ; X86, M1ARM;b; 21
+c; NOTE_Af1 ; X86, M1ARM;b; 22
+c; NOTE_B1 ; X86, M1ARM;b; 23
+
+c; NOTE_C2 ; X86, M1ARM; b;24
+c; NOTE_Cf2 ; X86, M1ARM;b; 25
+c; NOTE_D2 ; X86, M1ARM;b; 26
+c; NOTE_Df2 ; X86, M1ARM; b;27
+c; NOTE_E2 ; X86, M1ARM;b; 28
+c; NOTE_F2 ; X86, M1ARM; b;29
+c; NOTE_Ff2 ; X86, M1ARM; b;30
+c; NOTE_G2 ; X86, M1ARM;b; 31
+c; NOTE_Gf2 ; X86, M1ARM;b; 32
+c; NOTE_A2 ; X86, M1ARM; b;33
+c; NOTE_Af2 ; X86, M1ARM;b; 34
+c; NOTE_B2 ; X86, M1ARM;b; 35
+
+#c; KEY_; X86, M1ARM; b; $
+
+c; KEY_A; X86, M1ARM; b; $1E
+c; KEY_B; X86, M1ARM; b; $30
+c; KEY_C; X86, M1ARM; b; $2E
+c; KEY_D; X86, M1ARM; b; $20
+c; KEY_E; X86, M1ARM; b; $12
+c; KEY_F; X86, M1ARM; b; $21
+c; KEY_G; X86, M1ARM; b; $22
+c; KEY_H; X86, M1ARM; b; $23
+c; KEY_I; X86, M1ARM; b; $17
+c; KEY_J; X86, M1ARM; b; $24
+c; KEY_K; X86, M1ARM; b; $25
+c; KEY_L; X86, M1ARM; b; $26
+c; KEY_M; X86, M1ARM; b; $32
+c; KEY_N; X86, M1ARM; b; $31
+c; KEY_O; X86, M1ARM; b; $18
+c; KEY_P; X86, M1ARM; b; $19
+c; KEY_Q; X86, M1ARM; b; $10
+c; KEY_R; X86, M1ARM; b; $13
+c; KEY_S; X86, M1ARM; b; $1f
+c; KEY_T; X86, M1ARM; b; $14
+c; KEY_U; X86, M1ARM; b; $16
+c; KEY_V; X86, M1ARM; b; $2F
+c; KEY_W; X86, M1ARM; b; $11
+c; KEY_X; X86, M1ARM; b; $2D
+c; KEY_Y; X86, M1ARM; b; $15
+c; KEY_Z; X86, M1ARM; b; $2C
+c; KEY_BACKSPACE; X86, M1ARM; b; $0E
+c; KEY_DEL; X86, M1ARM; b; $53
+c; KEY_DOWNARROW; X86, M1ARM; b; $50
+c; KEY_ENTER; X86, M1ARM; b; $1C
+c; KEY_ESC; X86, M1ARM; b; $01
+c; KEY_LEFTARROW; X86, M1ARM; b; $4B
+c; KEY_RIGHTARROW; X86, M1ARM; b; $4D
+c; KEY_SPACEBAR; X86, M1ARM; b; $39
+
+c; KEY_TAB; X86, M1ARM; b; $0F
+c; KEY_UPARROW; X86, M1ARM; b; $48
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c; NOTE_C0 ; VIC20;b; 135
+c; NOTE_Cf0 ; VIC20;b; 143
+c; NOTE_D0 ; VIC20;b; 147
+c; NOTE_Df0 ; VIC20;b; 151
+c; NOTE_E0 ; VIC20; b; 159
+c; NOTE_F0 ; VIC20;b; 163
+c; NOTE_Ff0 ; VIC20;b; 167
+c; NOTE_G0 ; VIC20;b; 175
+c; NOTE_Gf0 ; VIC20;b; 179
+c; NOTE_A0 ; VIC20;b; 183
+c; NOTE_Af0 ; VIC20;b; 187
+c; NOTE_B0 ; VIC20;b; 191
+
+c; NOTE_C1 ; VIC20; b; 195
+c; NOTE_Cf1 ; VIC20;b; 199
+c; NOTE_D1 ; VIC20;b; 201
+c; NOTE_Df1 ; VIC20;b; 203
+c; NOTE_E1 ; VIC20; b; 207
+c; NOTE_F1 ; VIC20;b; 209
+c; NOTE_Ff1 ; VIC20;b; 212
+c; NOTE_G1 ; VIC20;b; 215
+c; NOTE_Gf1 ; VIC20;b; 217
+c; NOTE_A1 ; VIC20;b; 219
+c; NOTE_Af1 ; VIC20;b; 221
+c; NOTE_B1 ; VIC20;b; 223
+
+c; NOTE_C2 ; VIC20; b; 225
+c; NOTE_Cf2 ; VIC20;b; 227
+c; NOTE_D2 ; VIC20;b; 228
+c; NOTE_Df2 ; VIC20; b; 229
+c; NOTE_E2 ; VIC20;b; 231
+c; NOTE_F2 ; VIC20; b; 232
+c; NOTE_Ff2 ; VIC20; b; 233
+c; NOTE_G2 ; VIC20;b; 235
+c; NOTE_Gf2 ; VIC20;b; 236
+c; NOTE_A2 ; VIC20; b; 237
+c; NOTE_Af2 ; VIC20;b; 238
+c; NOTE_B2 ; VIC20;b; 239
+
+c; NOTE_C3 ; VIC20; b; 240
+c; NOTE_Cf3 ; VIC20;b; 241
+c; NOTE_D3 ; VIC20;b; 242
+c; NOTE_Df3 ; VIC20; b; 243
+
+
+
+
+
+
+#
+#
+#
+#  C O N S T A N T S
+#
+#
+#
+
+c; TRUE; ALL;  b; 1
+c; FALSE; ALL; b; 0
+c; NADA; X16,NES, C64, MEGA65, PLUS4,VIC20,C128,PET, Amiga, ATARI520ST, OK64,X86, M1ARM, GAMEBOY, SPECTRUM, MSX,  TIKI100, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800, AMSTRADCPC, VZ200 , COLECO, JDH8; i; 0
+
+
+# NES-specific
+
+c; PPUCTRL; NES; a; $2000
+c; PPUMASK; NES; a; $2001
+c; PPUSTATUS; NES; a; $2002
+c; OAMADDR; NES; a; $2003
+c; OAMDATA; NES; a; $2004
+c; PPUSCROLL; NES; a; $2005
+c; PPUADDR; NES; a; $2006
+c; PPUDATA; NES; a; $2007
+c; OAMDMA; NES; a; $4014
+
+
+
+# MSX-specific
+
+c;CHPUT;MSX;a;$00A2
+c;CHGCLR;MSX;a;$0062
+c;FORCLR;MSX;a;$F3E9
+c;BAKCLR;MSX;a;$F3EA
+c;BDRCLR;MSX;a;$F3EB
+c;CLS;MSX;a;$00C3
+
+
+# Commodore-specific
+c; Joy1; VIC20, C64, MEGA65; ;
+c; Joy2; C64, MEGA65; ;
+c; Joy1Pressed; VIC20, C64, MEGA65; ;
+c; Joy2Pressed; C64, MEGA65; ;
+
+
+# VZ200 constants
+
+c; SCREEN_WIDTH; VZ200; b; 32
+c; SCREEN_HEIGHT; VZ200; b; 16
+c; SCREEN; VZ200 ; a; $7000
+
+
+# AMSTRADCPC, VZ200  constants
+
+c; SCREEN; AMSTRADCPC, SPECTRUM; a; $C000
+c; INIT_MUSIC; AMSTRADCPC, VZ200 , SPECTRUM; a; $0000
+c; PLAY_MUSIC; AMSTRADCPC, VZ200 , SPECTRUM; a; $0000
+c; STOP_MUSIC; AMSTRADCPC, VZ200 , SPECTRUM; a; $0000
+
+# ATARI 2600 constants
+
+c; BACKGROUND_COLOR; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $09
+c; PLAYFIELD_COLOR; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $08
+c; PLAYFIELD_PLAYER1; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $07
+c; PLAYFIELD_PLAYER0; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $06
+
+c; PLAYFIELD0; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $0D
+c; PLAYFIELD1; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $0E
+c; PLAYFIELD2; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $0F
+c; PLAYFIELD_CONTROL; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $A
+
+
+c; PLAYER0_COLOR; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $06
+c; PLAYER1_COLOR; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $07
+
+c; PLAYER0_GFX; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $1B
+c; PLAYER1_GFX; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $1C
+
+
+
+
+
+
+c; RESP0; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $10
+c; RESP1; ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; a; $11
+
+# BBC Specific constants
+
+
+c; MODE5_VRAM ; BBCM, ACORN; a; $5800
+c; MODE2_VRAM ; BBCM, ACORN; a; $4000
+c; SHEILA_REG ; BBCM, ACORN; a; $FE00
+c; SHEILA_WRITE ; BBCM, ACORN; a; $FE01
+c; SCREEN_CHAR_LOC ; BBCM, ACORN; a; $7C00
+
+# X86, M1ARM REGISTERS
+
+c; _AX; PX86, M1ARM; a; 0
+c; _BX; PX86, M1ARM; a; 0
+c; _CX; PX86, M1ARM; a; 0
+c; _DX; PX86, M1ARM; a; 0
+c; _AH; PX86, M1ARM; a; 0
+c; _BH; PX86, M1ARM; a; 0
+c; _CH; PX86, M1ARM; a; 0
+c; _DH; PX86, M1ARM; a; 0
+c; _AL; PX86, M1ARM; a; 0
+c; _BL; PX86, M1ARM; a; 0
+c; _CL; PX86, M1ARM; a; 0
+c; _DL; PX86, M1ARM; a; 0
+c; _ES; PX86, M1ARM; a; 0
+c; _DI; PX86, M1ARM; a; 0
+c; _DS; PX86, M1ARM; a; 0
+c; _SI; PX86, M1ARM; a; 0
+# 6502 REGISTERS
+
+c; _A; MOS6502; a; 0
+c; _X; MOS6502; a; 0
+c; _Y; MOS6502; a; 0
+c; _AX; MOS6502; a; 0
+c; _AY; MOS6502; a; 0
+c; _XY; MOS6502; a; 0
+
+
+# VIC 20-specific constants
+
+c; PAL_OR_NTSC;VIC20; a; $ede4
+c; SCREEN_COL_LOC; VIC20; a; $9600, $9400
+c; SCREEN_CHAR_LOC; VIC20; a; $1E00, $1000
+c; SCREEN_WIDTH; VIC20; b; 22
+c; SCREEN_HEIGHT; VIC20; b; 23
+c; HSCROLL_REGISTER; VIC20; a; $9000
+c; VSCROLL_REGISTER; VIC20; a; $9001
+c; SCREEN_TEXT_WIDTH; VIC20; a; $9002
+c; SCREEN_TEXT_HEIGHT; VIC20; a; $9003
+c; VIC_RASTERLINE; VIC20; a; $9004
+c; VIC_DATA_LOC; VIC20; a; $9005
+c; SCREEN_CHAR_REGISTER; VIC20; a; $9005
+c; HPEN_REGISTER; VIC20; a; $9006
+c; VPEN_REGISTER; VIC20; a; $9007
+c; XPADDLE_REGISTER; VIC20; a; $9008
+c; YPADDLE_REGISTER; VIC20; a; $9009
+c; SOUND1_REGISTER; VIC20; a; $900A
+c; SOUND2_REGISTER; VIC20; a; $900B
+c; SOUND3_REGISTER; VIC20; a; $900C
+c; SOUNDFX_REGISTER; VIC20; a; $900D
+c; AUX_COLOR_AND_VOLUME; VIC20; a; $900E
+c; SCREEN_BG_COLOR; VIC20; a; $900F
+c; VICCR0; VIC20; a; $9000
+c; VICCR1; VIC20; a; $9001
+c; VICCR2; VIC20; a; $9002
+c; VICCR3; VIC20; a; $9003
+c; VICCR4; VIC20; a; $9004
+c; VICCR5; VIC20; a; $9005
+c; VICCR6; VIC20; a; $9006
+c; VICCR7; VIC20; a; $9007
+c; VICCR8; VIC20; a; $9008
+c; VICCR9; VIC20; a; $9009
+c; VICCRA; VIC20; a; $900A
+c; VICCRB; VIC20; a; $900B
+c; VICCRC; VIC20; a; $900C
+c; VICCRD; VIC20; a; $900D
+c; VICCRE; VIC20; a; $900E
+c; VICCRF; VIC20; a; $900F
+
+c; SCREEN_BG_BLACK; VIC20; b; 8
+c; SCREEN_BG_WHITE; VIC20; b; 24
+c; SCREEN_BG_RED; VIC20; b; 40
+c; SCREEN_BG_CYAN; VIC20; b; 56
+c; SCREEN_BG_PURPLE; VIC20; b; 72
+c; SCREEN_BG_GREEN; VIC20; b; 88
+c; SCREEN_BG_BLUE; VIC20; b; 104
+c; SCREEN_BG_YELLOW; VIC20; b; 120
+c; SCREEN_BG_ORANGE; VIC20; b; 136
+c; SCREEN_BG_LTORANGE; VIC20; b; 152
+c; SCREEN_BG_PINK; VIC20; b; 168
+c; SCREEN_BG_LTCYAN; VIC20; b; 184
+c; SCREEN_BG_LTPURPLE; VIC20; b; 200
+c; SCREEN_BG_LTGREEN; VIC20; b; 216
+c; SCREEN_BG_LTBLUE; VIC20; b; 232
+c; SCREEN_BG_LTYELLOW; VIC20; b; 248
+
+
+c; JOY_UP; VIC20; b; %00000010
+c; JOY_DOWN; VIC20; b; %00000100
+c; JOY_LEFT; VIC20; b; %00001000
+c; JOY_RIGHT; VIC20; b; %00000001
+c; JOY_FIRE; VIC20; b; %00010000
+
+
+# OK64 specific constants
+c; OKVC_RANDOM; OK64; a; $FFF0
+c; OKVC_VSYNC; OK64; a; $FFEF
+c; OKVC_EXEC; OK64; a; $FF10
+c; OKVC_FONT_BANK; OK64; a; $FFEE
+c; OKVC_FONT_WIDTH; OK64; a; $FFED
+c; OKVC_FONT_HEIGHT; OK64; a; $FFEC
+c; OKVC_BORDER_WIDTH; OK64; a; $FFEB
+c; OKVC_BORDER_HEIGHT; OK64; a; $FFEA
+c; OKVC_BORDER_COLOR; OK64; a; $FFE9
+c; OKVC_INPUT_KEY; OK64; a; $FFE8
+c; OKVC_FILE; OK64; a; $FF20
+c; OKVC_SRC_PAGE; OK64; a; 0xFFE7
+c; OKVC_DST_PAGE; OK64; a; 0xFFE6
+c; OKVC_CURRENT_STRIP; OK64; a; 0xFFE5
+c; OKVC_STRIP; OK64; a; 0xFE00
+c; OKVC_BLIT_TYPE; OK64; a; 0xFFE4
+c; OKVC_BLIT_ALPHAVAL; OK64; a; 0xFFE3
+c; OKVC_BLIT_ALPHA ; OK64; b; 1
+c; OKVC_BLIT_ADD ; OK64; b; 2
+c; OKVC_CHANNEL1_VOL ; OK64; a; 0xFFE1
+c; OKVC_CHANNEL2_VOL ; OK64; a; 0xFFE2
+c; OKVC_OUTVAL ; OK64; a; 0xFFE0
+
+
+m; drawPixel; OK64; b,b,b
+m; drawLine; OK64; b,b,b,b,b
+m; drawCircleFilled; OK64; b,b,b,b
+m; drawRect; OK64; b,b,b,b,b
+m; drawPoly; OK64; b,b,b,b,b,b,b
+m; ClearScreen; OK64; b
+m; WaitForVsync; OK64;
+m; toColor; OK64; b,b,b
+m; setPalette; OK64; b,b,b,b
+m; blit; OK64; b,b,b,b,b,b
+m; PrintChar; OK64; ,b,b,b,b
+m; InputIRQ; OK64; p
+m; ResetFileList; OK64;
+m; ReadNextFile; OK64;
+m; LoadFile; OK64;
+m; MemCpyOKVC; OK64; b,b,b,b,b,b,b,b
+m; setDefaultPalette; OK64;
+m; fmul;OK64;b,b
+
+
+
+# NULL pointer:
+
+c; NIL;X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, BBCM, ACORN, ATARI800, OK64, PX86, M1ARM, GAMEBOY, AMSTRADCPC, VZ200 , COLECO, SPECTRUM, MSX,  TIKI100, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; i; 0
+c; NIL;Amiga, ATARI520ST, OK64 ; l; 0
+c; NADA;X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, BBCM, ACORN, ATARI800, OK64, PX86, M1ARM, GAMEBOY, AMSTRADCPC, VZ200 , COLECO, SPECTRUM, MSX,  TIKI100, ATARI2600, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800; i; 0
+c; NADA;Amiga, ATARI520ST, OK64 ; l; 0
+
+
+
+# PLUS4 specific methods
+
+m; Set256CharMode; PLUS4;
+
+# PLUS4 specific constants
+
+c; SCREEN_BG_COL; PLUS4; a; $ff19
+c; SCREEN_FG_COL; PLUS4; a; $ff15
+c; SCREEN_CHAR_LOC; PLUS4; a; $0c00
+c; SCREEN_COL_LOC; PLUS4; a; $0800
+c; SCREEN_WIDTH; PLUS4; b; 40
+c; SCREEN_HEIGHT; PLUS4; b; 25
+c; RASTERLINE_POS; PLUS4; a; $ff1d
+c; BLACK; PLUS4; b; 0
+c; WHITE; PLUS4; b; $71
+c; RED; PLUS4; b; $32
+c; CYAN; PLUS4; b; $63
+c; PURPLE; PLUS4; b; $44
+c; GREEN; PLUS4; b; $55
+c; BLUE; PLUS4; b; $36
+c; YELLOW; PLUS4; b; $77
+c; ORANGE; PLUS4; b; $48
+c; BROWN; PLUS4; b; $39
+c; LIGHT_RED; PLUS4; b; $52
+c; DARK_GREY; PLUS4; b; $41
+c; GREY; PLUS4; b; $51
+c; LIGHT_GREEN; PLUS4; b; $7f
+c; LIGHT_BLUE; PLUS4; b; $5e
+c; LIGHT_GREY; PLUS4; b; $61
+c; MULTICOLOR_CHAR_COL; PLUS4; a; $ff15
+
+# C64, MEGA65, C128-specific constants
+
+c; SCREEN_BG_COL; C64, MEGA65, C128; a; $D020
+c; SCREEN_FG_COL; C64, MEGA65, C128; a; $D021
+c; SCREEN_CHAR_LOC; MEGA65; a; $0800
+c; SCREEN_CHAR_LOC; C64, C128, APPLEII, SNES, ORIC; a; $0400
+c; SCREEN_CHAR_LOC2; C64, C128; a; $4400
+c; SCREEN_CHAR_LOC3; C64, C128; a; $8400
+c; SCREEN_CHAR_LOC4; C64, C128; a; $C400
+c; BANK_SIZE; C64, MEGA65, C128; a; $4000
+c; SCREEN_COL_LOC; C64, MEGA65, C128; a; $D800
+c; SCREEN_COL_LOC80; MEGA65; a; $F800
+c; SCREEN_WIDTH; C64, C128, ATARI800, APPLEII; b; 40
+c; SCREEN_WIDTH; MEGA65; b; 80
+c; SCREEN_HEIGHT; C64, MEGA65, ATARI800, C128; b; 25
+c; SCREEN_HEIGHT; APPLEII; b; 24
+c; RASTERLINE_POS; C64, MEGA65, C128; a; $D012
+c; SCREEN_CTRL;C64; a; $D011
+c; BLACK; C64, MEGA65, C128, VIC20,X16; b; 0
+c; WHITE; C64, MEGA65, C128, VIC20,X16; b; 1
+c; RED  ; C64, MEGA65, C128, VIC20,X16;b;2
+c; CYAN; C64, MEGA65, C128, VIC20,X16; b;3
+c; PURPLE; C64, MEGA65, C128, VIC20,X16; b;4
+c; GREEN; C64, MEGA65, C128, VIC20,X16; b;5
+c; BLUE; C64, MEGA65, C128, VIC20,X16; b;6
+c; YELLOW; C64, MEGA65, C128, VIC20,X16; b;7
+c; ORANGE; C64, MEGA65, C128,X16; b;8
+c; BROWN; C64, MEGA65, C128,X16; b;9
+c; LIGHT_RED; C64, MEGA65, C128,X16; b;10
+c; DARK_GREY; C64, MEGA65, C128,X16; b;11
+c; GREY; C64, MEGA65, C128,X16; b;12
+c; LIGHT_GREEN; C64, MEGA65, C128,X16;b;13
+c; LIGHT_BLUE; C64, MEGA65, C128,X16; b;14
+c; LIGHT_GREY; C64, MEGA65, C128,X16; b;15
+c; SPRITE_POS; C64, MEGA65, C128; a; $D000
+c; SPRITE_DATA_LOC; C64, MEGA65, C128; a;$07F8
+c; SPRITE_BITMASK; C64, MEGA65, C128; a; $D015
+c; SPRITE_COLOR; C64, MEGA65, C128;a;$D027
+c; SPRITE_DATA; C64, MEGA65, C128; a; $0340
+c; SPRITE_COLLISION; C64, MEGA65, C128;a;$D01E
+c; SPRITE_BG_COLLISION; C64, MEGA65, C128;a;$D01F
+c; SPRITE_STRETCH_X; C64, MEGA65, C128;a;$D01D
+c; SPRITE_STRETCH_Y; C64, MEGA65, C128;a;$D017
+c; JOY_UP; C64, MEGA65; b; %00000001
+c; JOY_DOWN; C64, MEGA65; b; %00000010
+c; JOY_LEFT; C64, MEGA65; b; %00000100
+c; JOY_RIGHT; C64, MEGA65; b; %00001000
+c; JOY_FIRE; C64, MEGA65; b; %00010000
+
+c; KEY_A; C64, MEGA65, PLUS4, C128; b;$01
+c; KEY_B; C64, MEGA65, PLUS4, C128; b;$02
+c; KEY_C; C64, MEGA65, PLUS4, C128; b;$03
+c; KEY_D; C64, MEGA65, PLUS4, C128; b;$04
+c; KEY_E; C64, MEGA65, PLUS4, C128; b;$05
+c; KEY_F; C64, MEGA65, PLUS4, C128; b;$06
+c; KEY_G; C64, MEGA65, PLUS4, C128; b;$07
+c; KEY_H; C64, MEGA65, PLUS4, C128; b;$08
+c; KEY_I; C64, MEGA65, PLUS4, C128; b;$09
+c; KEY_J; C64, MEGA65, PLUS4, C128; b;$0A
+c; KEY_K; C64, MEGA65, PLUS4, C128; b;$0B
+c; KEY_L; C64, MEGA65, PLUS4, C128; b;$0C
+c; KEY_M; C64, MEGA65, PLUS4, C128; b;$0D
+c; KEY_N; C64, MEGA65, PLUS4, C128; b;$0E
+c; KEY_O; C64, MEGA65, PLUS4, C128; b;$0F
+c; KEY_P; C64, MEGA65, PLUS4, C128; b;$10
+c; KEY_Q; C64, MEGA65, PLUS4, C128; b;$11
+c; KEY_R; C64, MEGA65, PLUS4, C128; b;$12
+c; KEY_S; C64, MEGA65, PLUS4, C128; b;$13
+c; KEY_T; C64, MEGA65, PLUS4, C128; b;$14
+c; KEY_U; C64, MEGA65, PLUS4, C128; b;$15
+c; KEY_V; C64, MEGA65, PLUS4, C128; b;$16
+c; KEY_W; C64, MEGA65, PLUS4, C128; b;$17
+c; KEY_X; C64, MEGA65, PLUS4, C128; b;$18
+c; KEY_Y; C64, MEGA65, PLUS4, C128; b;$19
+c; KEY_Z; C64, MEGA65, PLUS4, C128; b;$1A
+c; KEY_0; C64, MEGA65, PLUS4, C128; b;$30
+c; KEY_1; C64, MEGA65, PLUS4, C128; b;$31
+c; KEY_2; C64, MEGA65, PLUS4, C128; b;$32
+c; KEY_3; C64, MEGA65, PLUS4, C128; b;$33
+c; KEY_4; C64, MEGA65, PLUS4, C128; b;$34
+c; KEY_5; C64, MEGA65, PLUS4, C128; b;$35
+c; KEY_6; C64, MEGA65, PLUS4, C128; b;$36
+c; KEY_7; C64, MEGA65, PLUS4, C128; b;$37
+c; KEY_8; C64, MEGA65, PLUS4, C128; b;$38
+c; KEY_9; C64, MEGA65, PLUS4, C128; b;$39
+
+c; KEY_F1; C64, MEGA65, PLUS4, C128; b;$F1
+c; KEY_F3; C64, MEGA65, PLUS4, C128; b;$F3
+c; KEY_F5; C64, MEGA65, PLUS4, C128; b;$F5
+c; KEY_F7; C64, MEGA65, PLUS4, C128; b;$F7
+
+c; KEY_PLUS; C64, MEGA65, PLUS4, C128; b;$2b
+c; KEY_MINUS; C64, MEGA65, PLUS4, C128; b;$28
+c; KEY_POUND; C64, MEGA65, PLUS4, C128; b;$1c
+c; KEY_ENTER; C64, MEGA65, PLUS4, C128; b;$F0
+c; KEY_ASTERIX; C64, MEGA65, PLUS4, C128; b;$2a
+c; KEY_SEMI; C64, MEGA65, PLUS4, C128; b;$3b
+c; KEY_HOME; C64, MEGA65, PLUS4, C128; b;$EF
+c; KEY_SPACE; C64, MEGA65, PLUS4, C128, OK64, PET; b;$20
+c; KEY_COMMODORE; C64, MEGA65, PLUS4, C128; b;$EE
+c; KEY_COLON; C64, MEGA65, PLUS4, C128; b;$3a
+c; KEY_EQUALS; C64, MEGA65, PLUS4, C128; b;$3d
+
+# Vic 20 keys returned from address 197
+c; KEY_NONE; VIC20; b;64
+c; KEY_1; VIC20; b;0
+c; KEY_3; VIC20; b;1
+c; KEY_5; VIC20; b;2
+c; KEY_7; VIC20; b;3
+c; KEY_9; VIC20; b;4
+c; KEY_PLUS; VIC20; b;5e
+c; KEY_POUND; VIC20; b;6
+c; KEY_DEL; VIC20; b;7
+c; KEY_LEFTARROW; VIC20; b;8
+c; KEY_W; VIC20; b;9
+c; KEY_R; VIC20; b;10
+c; KEY_Y; VIC20; b;11
+c; KEY_I; VIC20; b;12
+c; KEY_P; VIC20; b;13
+c; KEY_ASTERISK; VIC20; b;14
+c; KEY_RETURN; VIC20; b;15
+
+c; KEY_A; VIC20; b;17
+c; KEY_D; VIC20; b;18
+c; KEY_G; VIC20; b;19
+c; KEY_J; VIC20; b;20
+c; KEY_L; VIC20; b;21
+c; KEY_SEMICOLON; VIC20; b;22
+c; KEY_CURSORHORIZ; VIC20; b;23
+c; KEY_RUNSTOP; VIC20; b;24
+
+c; KEY_X; VIC20; b;26
+c; KEY_V; VIC20; b;27
+c; KEY_N; VIC20; b;28
+c; KEY_COMMA; VIC20; b;29
+c; KEY_SLASH; VIC20; b;30
+c; KEY_CURSORVERT; VIC20; b;31
+c; KEY_SPACE; VIC20; b;32
+c; KEY_Z; VIC20; b;33
+c; KEY_C; VIC20; b;34
+c; KEY_B; VIC20; b;35
+c; KEY_M; VIC20; b;36
+c; KEY_FULLSTOP; VIC20; b;37
+
+c; KEY_F1; VIC20; b;39
+
+c; KEY_S; VIC20; b;41
+c; KEY_F; VIC20; b;42
+c; KEY_H; VIC20; b;43
+c; KEY_K; VIC20; b;44
+c; KEY_COLON; VIC20; b;45
+c; KEY_EQUALS; VIC20; b;46
+c; KEY_F3; VIC20; b;47
+c; KEY_Q; VIC20; b;48
+c; KEY_E; VIC20; b;49
+c; KEY_T; VIC20; b;50
+c; KEY_U; VIC20; b;51
+c; KEY_O; VIC20; b;52
+c; KEY_AT; VIC20; b;53
+c; KEY_UPARROW; VIC20; b;54
+c; KEY_F5; VIC20; b;55
+c; KEY_2; VIC20; b;56
+c; KEY_4; VIC20; b;57
+c; KEY_6; VIC20; b;58
+c; KEY_8; VIC20; b;59
+c; KEY_0; VIC20; b;60
+c; KEY_MINUS; VIC20; b;61
+c; KEY_HOME; VIC20; b;62
+c; KEY_F7; VIC20; b;63
+
+c; SPRITE_MULTICOLOR; C64, MEGA65, C128;a;$D01C
+c; SPRITE_MULTICOLOR_REG1; C64, MEGA65, C128; a;$D025
+c; SPRITE_MULTICOLOR_REG2; C64, MEGA65, C128; a;$D026
+c; MULTICOLOR_CHAR_COL; C64, MEGA65, C128;a;$D021
+c; SID_TRI; C64, MEGA65, C128, OK64;b;16
+c; SID_SAW; C64, MEGA65, C128, OK64;b;32
+c; SID_PULSE; C64, MEGA65, C128, OK64;b;64
+c; SID_NOISE; C64, MEGA65, C128, OK64;b;128
+c; SID_CHANNEL1; C64, MEGA65, C128, OK64;b;0
+c; SID_CHANNEL2; C64, MEGA65, C128, OK64;b;7
+c; SID_CHANNEL3; C64, MEGA65, C128, OK64;b;14
+c; SID; C64, MEGA65, C128, OK64;a;$D400
+c; VIC_BANK0; C64, MEGA65, C128; b;3
+c; VIC_BANK1; C64, MEGA65, C128;b;2
+c; VIC_BANK2; C64, MEGA65, C128;b;1
+c; VIC_BANK3; C64, MEGA65, C128;b;0
+c; VIC_DATA_LOC; C64, MEGA65;a;$d018
+
+c; KEYBOARD_INPUT; Amiga; a; $bfec01
+c; COPPER_DIWSTRT; Amiga, ATARI520ST;i; $08E
+c; COPPER_DIWSTOP; Amiga, ATARI520ST;i; $090
+c; COPPER_DDFSTRT; Amiga, ATARI520ST;i; $092
+c; COPPER_DDFSTOP; Amiga, ATARI520ST;i; $094
+c; COPPER_SCROLL; Amiga, ATARI520ST;i; $0102
+c; COPPER_WAIT_FOR_RASTER; Amiga, ATARI520ST; i; $FFFE
+c; COPPER_WAIT_FOR_RASTER0; Amiga, ATARI520ST; i; $FF00
+c; COPPER_PALETTE_START; Amiga, ATARI520ST;i; $0180
+c; COPPER_MODULO_EVEN; Amiga, ATARI520ST;i; $0108
+c; COPPER_MODULO_ODD; Amiga, ATARI520ST;i; $010A
+c; COPPER_IRQ; Amiga, ATARI520ST; i; %00010000
+c; VB_IRQ; Amiga, ATARI520ST; i; %00100000
+c; CIA_IRQ; Amiga; i; %00001000
+c; BLITTER_IRQ; Amiga, ATARI520ST; i; %01000000
+c; EXTERN_IRQ; Amiga; i; %10000000000000
+
+# C128 schtøff
+
+c; VIC_DATA_LOC; C128;a;$0A2C
+c; MMU ; C128 ; a ; $FF00
+c; SWAPPER; C128; a; $FF5F
+
+m; VDCInit; C128; b
+m; VDCWrite; C128; b, b
+m; Go80Columns; C128;
+m; initmoveto80; C128;
+m; moveto80; C128; b,b,b
+m; print80; C128; a,b
+m; fill80; C128; b,b
+
+
+
+
+# Commander X16 stuff
+
+c; VERA_ADDR_HI; X16; a;$9F22
+c; VERA_ADDR_MID; X16; a;$9F21
+c; VERA_ADDR_LO; X16; a;$9F20
+c; VERA_DATA1; X16; a;$9F23
+c; VERA_DATA2; X16; a;$9F24
+c; VERA_CTRL; X16; a;$9F25
+c; VERA_IEN; X16; a;$9F26
+c; VERA_ISR; X16; a;$9F27
+c; RAM_BANK ; X16; a; $9F61
+
+
+c;CINT;X16;a; $ff81
+c;CLRCHN;X16;a; $ffcc
+c;CHROUT;X16;a; $ffd2
+c;PLOT;X16;a; $fff0
+c;READ_KEYBOARD;X16;a; $ffe4
+
+#m; MoveTo; X16 ; b,b
+m; VeraPoke; X16; b,b,b
+m; VeraPokeDual; X16; b,b,b,b
+#m; InitPalette;X16;b
+#m; SetColor;X16;b,b,b
+m; SetVideoMode;X16;b,b,b
+m; SetVeraBank;X16; b
+m; SetVeraIncrement;X16; b
+m; SetVeraTileMode; X16; b,b
+#m; InitSprite; X16 ; b
+#m; SetSpriteLoc; X16; i #m; enableSprites;X16;b
+#m; SpritePos; X16 ; i,i
+#m; SpriteDepth; X16; b
+#m; SpriteSize; X16; b,b
+#m; SpritePaletteOffset; X16; b
+m; copydatatovera; X16; a,b,b,b,b
+
+
+#c; SCREEN_WIDTH; X16; b; 80
+#c; SCREEN_HEIGHT; X16; b; 60
+
+
+
+# PET STUFF
+
+c; SCREEN_CHAR_LOC; PET; a; $8000
+c; SCREEN_WIDTH ;PET; b; 80
+c; SCREEN_HEIGHT ;PET; b; 25
+
+
+
+#
+#
+#
+#
+#   R E S E R V E D      W O R D S
+# 
+#
+#
+#
+
+r; BEGIN; ALL
+r; END; ALL
+r; VAR; ALL
+r; PROGRAM; ALL
+r; INTEGER; ALL
+r; GLOBAL; ALL
+r; PURE; ALL
+r; PURE_VARIABLE; ALL
+r; PURE_NUMBER; ALL
+r; LONG; Amiga, ATARI520ST, MEGA65, PX86, M1ARM, SNES, WDC65C02, WDC65C816, CUSTOM, X16, MOS6502
+r; PROCEDURE; ALL
+r; MACRO; ALL
+r; ENDMACRO; ALL
+r; FUNCTION; ALL
+r; IF; ALL
+r; THEN; ALL
+#r; PERHAPS; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, BBCM, ACORN, ATARI800, OK64, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800
+#r; MAYBE; X16,C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, BBCM, ACORN, ATARI800, OK64, APPLEII, SNES, ORIC, BBCM, ACORN, ATARI800
+r; FOR; ALL
+r; FORI; ALL
+r; TO; ALL
+r; DO; ALL
+r; WHILE; ALL
+r; REPEAT; MOS6502
+r; REPEND; MOS6502
+r; UNTIL; MOS6502
+r; ARRAY; ALL
+r; OF; ALL
+r; BYTE; ALL
+r; BOOLEAN; ALL
+r; INCBIN; ALL
+r; STRING; ALL
+r; CSTRING; C64, MEGA65, PLUS4, C128, VIC20, PET, APPLEII
+r; NO_TERM; ALL
+r; INVERT; ALL
+r; ASM; ALL
+r; INCSID; C64, MEGA65, PLUS4, C128, VIC20, PET,  NES, OK64
+r; INCNSF; NES, OK64
+r; SHR; ALL
+r; SHL; ALL
+r; XOR; ALL
+r; NOT; ALL
+r; BIN2INC; ALL
+r; INTERRUPT; ALL
+r; ELSE; ALL
+r; OR; ALL
+r; AND; ALL
+r; POINTER; ALL
+r; LPOINTER; MEGA65, SNES, WDC65C816,WDC65C02,S1C88
+r; PPOINTER; ALL
+r; AT; ALL
+r; ABSOLUTE; ALL
+r; INCLUDE; ALL
+r; USERDATA; ALL
+r; IFDEF; ALL
+r; DEFINE; ALL
+r; IFNDEF; ALL
+r; ENDIF; ALL
+r; OFFPAGE; ALL
+r; ONPAGE; ALL
+r; STEP; ALL
+r; BREAK; ALL
+r; CONTINUE; ALL
+r; RETURN; ALL
+r; STARTBLOCK; ALL
+r; ENDBLOCK; ALL
+r; IGNOREMETHOD; ALL
+r; ERROR; ALL
+r; WEDGE; X16,C64, MEGA65, PLUS4, C128
+r; USE; ALL
+r; UNIT; ALL
+r; STARTASSEMBLER; ALL
+r; ENDASSEMBLER; ALL
+r; ASSEMBLER; ALL
+r; DONOTREMOVE; ALL
+r; DONOTPREFIXUNIT; ALL
+r; DONOTPREFIX; ALL
+r; CASE; ALL
+r; REQUIREFILE; ALL
+r; RAISEERROR; ALL
+r; RAISEWARNING; ALL
+r; EXPORT; ALL
+r; PATHTOOL; ALL
+r; EXPORTSUBREGION; ALL
+r; EXPORT_PARALLAX_DATA; ALL
+r; EXPORTBLACKWHITE; ALL
+r; EXPORTCOMPRESSED; ALL
+r; EXPORTPRG2BIN; ALL
+r; EXPORTRGB8Palette; ALL
+r; IMPORTCHAR; ALL
+r; RECORD; ALL
+r; CLASS; ALL
+r; PRIVATE; ALL
+r; PUBLIC; ALL
+r; TYPE; ALL
+r; INLINE; ALL
+r; COMPRESS; ALL
+r; EXECUTE; ALL
+
+r; KRILLSLOADER; C64
+
+r; PBMEXPORT; C64, MEGA65, PLUS4, C128, VIC20, PET
+r; VBMEXPORT; X16,C64, MEGA65, PLUS4, C128, VIC20, BBCM, ACORN, ATARI800, NES, Amiga, ATARI520ST, OK64, PET
+r; VBMEXPORTCOLOR; X16,C64, MEGA65, PLUS4, C128, VIC20, BBCM, ACORN, ATARI800, NES, Amiga, ATARI520ST, OK64, PET
+r; VBMEXPORTCHUNK; X16,C64, MEGA65, PLUS4, C128, VIC20, BBCM, ACORN, ATARI800, NES, Amiga, ATARI520ST, OK64, PET
+r; VBMCOMPILECHUNK; C64, MEGA65, PLUS4, C128, VIC20, BBCM, ACORN, ATARI800, PET
+r; EXPORTFRAME; X16,C64, MEGA65, PLUS4, C128, VIC20, BBCM, ACORN, ATARI800, NES, Amiga, ATARI520ST, OK64, PET
+r; CHIPMEM; Amiga, ATARI520ST, OK64
+r; CONST; ALL
+r; STACK; MOS6502
+r; ADDRESS; ALL
+r; LENGTH; ALL
+r; SIZEOF; ALL
+r; IGNORESYSTEMHEADERS; ALL
+r; PROJECTSETTINGS; ALL
+r; SPRITEPACKER; ALL
+r; SPRITECOMPILER; ALL
+r; DELETEFILE; ALL
+r; COPYFILE; ALL
+r; ADDCPMHEADER; ALL
+r; ADDEMULATORPARAM; ALL
+r; SPLITFILE; ALL
+r; EXECUTE; ALL
+r; FORWARD; ALL
+r; BUILDTABLE; ALL
+r; BUILDSINETABLE; ALL
+r; BUILDTABLE2D; ALL
+r; UNROLL; ALL
+r; COMPRESSED; ALL
+r; VOLATILE; ALL
+r; COMPILE_AKG_MUSIC; AMSTRADCPC, VZ200
+r; SIGNED; ALL
+r; SETCOMPRESSIONWEIGHTS; ALL
+r; SETVALUE; ALL
+r; PERLINNOISE; ALL
+# Reserved names
+#r; SINE; X16,C64, MEGA65, PLUS4, C128, VIC20, BBCM, ACORN, ATARI800, Amiga, ATARI520ST, OK64, PET, X86, M1ARM, GAMEBOY, AMSTRADCPC, VZ200 , COLECO, SPECTRUM, MSX,  TIKI100
+r; SPRRAM; GAMEBOY, AMSTRADCPC, VZ200 , COLECO, SPECTRUM, MSX,  TIKI100
+r; RAM; MSX, VECTREX
+r; WRAM; GAMEBOY, AMSTRADCPC, VZ200 , COLECO, SPECTRUM, MSX,  TIKI100, POKEMONMINI
+r; HRAM; GAMEBOY, AMSTRADCPC, VZ200 , COLECO, SPECTRUM, MSX,  TIKI100
+r; ALIGNED; GAMEBOY, AMSTRADCPC, VZ200 , COLECO, SPECTRUM, MSX,  TIKI100, M68000
+r; BANK; GAMEBOY, AMSTRADCPC, VZ200 , COLECO, SPECTRUM, MSX,  TIKI100, SNES, MEGA65, JDH8, POKEMONMINI, CUSTOM,WDC65C816,WDC65C02,S1C88
+r; ADDMONITORCOMMAND; ALL
+r; SPARKLEFILE; ALL
+r; VicMemoryConfig; VIC20
+
+#
+#
+#
+#
+#   P L A T F O R M   I N F O
+#
+#
+#
+#
+p; Getting_Started; ALL
+p; Vic20; VIC20
+p; C64, MEGA65; C64, MEGA65
+p; Pascal; ALL
+p; Constants; ALL
+p; Variables; ALL
+p; Screen; X16,C64, MEGA65, PLUS4, VIC20
+p; interrupts; ALL
+p; asm_tips; ALL
+p; vbm_Vic_Bitmap_Mode; VIC20, VZ200
+p; vbm_memory; VIC20, VZ200
+p; bitwise_operations; ALL
+p; forward_references; ALL
+p; vic_interrupts; VIC20
+p; exomizer; C64, MEGA65,VIC20,PLUS4,C128, PET
+p; removeunusedsymbols; ALL
+p; postoptimize; ALL
+p; buildtable; ALL
+p; ras_files; ALL
+p; tru_files; ALL
+p; asm_files; ALL
+p; fjo_files; ALL
+p; flf_files; ALL
+p; paw_files; ALL
+p; rtf_files; ALL
+
+
+
+#
+#
+#   F J O N G   R A Y   T R A C E R
+#
+#
+#
+
+
+rf; AND;
+rf; BREAK;
+rf; DO;
+rf; ELSE;
+rf; ELSEIF;
+rf; END;
+rf; FALSE;
+rf; FOR;
+rf; IF;
+rf; IN;
+rf; LOCAL;
+rf; NIL;
+rf; NOT;
+rf; OR;
+rf; REPEAT;
+rf; FUNCTION;
+rf; RETURN;
+rf; THEN;
+rf; TRUE;
+rf; WHILE;
+rf; UNTIL;
+
+
+f ; AddObject; s,s,s,s, ignore,f,f,f
+f ; AddObjectRegular; s,s,s,s, ignore,f,f,f
+f ; SetRotation; s,f,f,f
+f ; SetPosition; s,f,f,f
+f ; AddPosition; s,f,f,f
+f ; AddC64, MEGA65LineToData; f,f,f,f
+f ; AddVGALineToData; f,f,f,f
+f ; AddVZ200ToData; f,f,f,f
+f ; SaveRawData; s
+f ; SaveRawScreen; s
+f ; CompressAndSaveHorizontalData ; f,f,s,s
+f ; AddScreen; f,f,f,f
+f ; AddCharsetScreen; f,f,s
+f ; SaveScreenAndCharset;s,s
+f ; CompressCharset;f,f,f,f,f,f
+f ; Message;s
+f ; ClearAllObjects;
+f ; SaveImage;s
+f ; AddRawCharsetData; f,f
+f ; globals;
+f ; output;
+f ; translate;
+f ; introduction_to_the_fjong_raytracer;
+
+
+illegalvariablenames; SPECTRUM, MSX,  TIKI100, GAMEBOY; a,b,c,d,e,af,bc,de,hl,h,l,sp
+illegalvariablenames; Amiga, ATARI520ST; sp, d0,d1,d2,d3,d4,d5,d6,d7,a0,a1,a2,a3,a4,a5,a6,a7
+
+
+
+

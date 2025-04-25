@@ -1,0 +1,8 @@
+# SetBank
+
+**Parameters:** byte;  
+**Category:** Screen routines  
+**Compatibility:** C64, MEGA65, C128  
+
+**Reference Link:**  
+[Back to Methods List](../../SUMMARY.md)
