@@ -1,3 +1,3 @@
 # Tutorials
 
-This folder contains tutorials and guides to help users get started with TRSE.
+The `tutorials` folder contains step-by-step guides to help users learn and get started with TRSE.

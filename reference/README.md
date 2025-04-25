@@ -1,3 +1,3 @@
 # Reference
 
-This folder contains reference materials, including documentation and specifications for TRSE.
+The `reference` folder contains detailed documentation and specifications for TRSE.

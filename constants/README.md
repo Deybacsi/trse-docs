@@ -1,3 +1,3 @@
 # Constants
 
-This folder contains constant values and configuration files used throughout the project.
+The `constants` folder contains configuration files and constant values used across the TRSE project.

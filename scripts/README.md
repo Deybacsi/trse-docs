@@ -1,3 +1,3 @@
 # Scripts
 
-This folder contains utility scripts and tools for automating tasks related to TRSE.
+The `scripts` folder contains tools and automation scripts for streamlining tasks related to TRSE.

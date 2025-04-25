@@ -1,3 +1,3 @@
 # Examples
 
-This folder contains example projects and code snippets demonstrating the usage of TRSE.
+The `examples` folder contains sample projects and code snippets showcasing the usage of TRSE.
