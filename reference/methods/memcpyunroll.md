@@ -4,6 +4,7 @@
 **Category:** Amiga routines  
 **Compatibility:** Amiga, ATARI520ST  
 
-**Reference Link:**  
+**Documentation Link:** [View Documentation](https://github.com/leuat/TRSE/raw/master/resources/text/help/m/memcpyunroll.rtf)
+
 [Back to Categories](../categories/amiga_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

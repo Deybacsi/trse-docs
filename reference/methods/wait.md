@@ -4,6 +4,6 @@
 **Category:** Other routines  
 **Compatibility:** MOS6502, Z80, Z180  
 
-**Reference Link:**  
+
 [Back to Categories](../categories/other_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

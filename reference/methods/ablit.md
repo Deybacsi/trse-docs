@@ -4,6 +4,7 @@
 **Category:** Amiga routines  
 **Compatibility:** Amiga  
 
-**Reference Link:**  
+**Documentation Link:** [View Documentation](https://github.com/leuat/TRSE/raw/master/resources/text/help/m/ablit.rtf)
+
 [Back to Categories](../categories/amiga_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

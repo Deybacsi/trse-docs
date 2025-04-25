@@ -4,6 +4,6 @@
 **Category:** Memory routines  
 **Compatibility:** C128  
 
-**Reference Link:**  
+
 [Back to Categories](../categories/memory_routines.md)  
 [Back to Methods List](../../SUMMARY.md)
