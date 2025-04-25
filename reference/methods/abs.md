@@ -1,9 +1,8 @@
 # Abs
 
 **Parameters:** integer or byte;  
-**Category:** Math routines  
+**Category:** [Math routines](../categories/math_routines.md)  
 **Compatibility:** MOS6502, M68000, M6809, Z80  
 
 
-[Back to Categories](../categories/math_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

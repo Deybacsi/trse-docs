@@ -1,9 +1,8 @@
 # PPUAttributeDump
 
 **Parameters:** address, byte, byte;  
-**Category:** Charset routines  
+**Category:** [Charset routines](../categories/charset_routines.md)  
 **Compatibility:** NES  
 
 
-[Back to Categories](../categories/charset_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

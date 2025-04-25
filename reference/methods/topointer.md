@@ -1,9 +1,8 @@
 # toPointer
 
 **Parameters:** long;  
-**Category:** Amiga routines  
+**Category:** [Amiga routines](../categories/amiga_routines.md)  
 **Compatibility:** Amiga, ATARI520ST  
 
 
-[Back to Categories](../categories/amiga_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

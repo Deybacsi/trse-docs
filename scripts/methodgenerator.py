@@ -47,6 +47,7 @@ def generate_method_file(method, output_folder, existing_files):
     Generates a Markdown file for a single method with inline properties in the header.
     Handles duplicate filenames by appending a unique identifier.
     Includes the optional URL as a link if present.
+    Makes the category a clickable link to its category page.
     """
     sanitized_name = sanitize_filename(method['name'])
     filename = f"{sanitized_name}.md"
@@ -64,14 +65,16 @@ def generate_method_file(method, output_folder, existing_files):
     # Add the optional URL as a link if present
     url_section = f"\n**Documentation Link:** [View Documentation]({method['url']})" if method['url'] else ""
 
+    # Make the category a clickable link
+    category_link = f"[{method['category']}](../categories/{sanitize_filename(method['category'])}.md)"
+
     content = f"""# {method['name']}
 
 **Parameters:** {method['params']}  
-**Category:** {method['category']}  
+**Category:** {category_link}  
 **Compatibility:** {method['compatibility']}  
 {url_section}
 
-[Back to Categories](../categories/{sanitize_filename(method['category'])}.md)  
 [Back to Methods List](../../SUMMARY.md)
 """
     with open(filepath, "w", encoding="utf-8") as file:

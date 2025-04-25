@@ -1,9 +1,8 @@
 # SetCharsetAndScreenLocation
 
 **Parameters:** number, number;  
-**Category:** Charset routines  
+**Category:** [Charset routines](../categories/charset_routines.md)  
 **Compatibility:** C64, C128, MEGA65  
 
 
-[Back to Categories](../categories/charset_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

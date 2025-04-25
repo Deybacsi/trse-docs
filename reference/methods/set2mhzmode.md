@@ -1,9 +1,8 @@
 # Set2MhzMode
 
 **Parameters:** ;  
-**Category:** Other routines  
+**Category:** [Other routines](../categories/other_routines.md)  
 **Compatibility:** C128  
 
 
-[Back to Categories](../categories/other_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

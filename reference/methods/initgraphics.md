@@ -1,9 +1,8 @@
 # InitGraphics
 
 **Parameters:** ;  
-**Category:** Atari ST routines  
+**Category:** [Atari ST routines](../categories/atari_st_routines.md)  
 **Compatibility:** ATARI520ST  
 
 
-[Back to Categories](../categories/atari_st_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

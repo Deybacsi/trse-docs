@@ -1,9 +1,8 @@
 # inportb
 
 **Parameters:** integer;  
-**Category:** Memory routines  
+**Category:** [Memory routines](../categories/memory_routines.md)  
 **Compatibility:** X86  
 
 
-[Back to Categories](../categories/memory_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

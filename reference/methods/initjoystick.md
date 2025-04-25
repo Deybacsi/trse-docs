@@ -1,9 +1,8 @@
 # initjoystick
 
 **Parameters:** ;  
-**Category:** Init functions  
+**Category:** [Init functions](../categories/init_functions.md)  
 **Compatibility:** C64, MEGA65, PLUS4, C128, VIC20  
 
 
-[Back to Categories](../categories/init_functions.md)  
 [Back to Methods List](../../SUMMARY.md)

@@ -1,9 +1,8 @@
 # SetSpriteLoc
 
 **Parameters:** byte, byte, number;  
-**Category:** Sprite routines  
+**Category:** [Sprite routines](../categories/sprite_routines.md)  
 **Compatibility:** C64, PLUS4, C128,  MEGA65  
 
 
-[Back to Categories](../categories/sprite_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

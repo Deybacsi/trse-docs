@@ -1,9 +1,8 @@
 # disassemble
 
 **Parameters:** ;  
-**Category:** Debugger methods  
+**Category:** [Debugger methods](../categories/debugger_methods.md)  
 **Compatibility:** ALL  
 
 
-[Back to Categories](../categories/debugger_methods.md)  
 [Back to Methods List](../../SUMMARY.md)

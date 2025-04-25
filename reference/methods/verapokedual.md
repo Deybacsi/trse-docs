@@ -1,9 +1,8 @@
 # VeraPokeDual
 
 **Parameters:** byte, byte, byte, byte;  
-**Category:** IRQ routines  
+**Category:** [IRQ routines](../categories/irq_routines.md)  
 **Compatibility:** X16  
 
 
-[Back to Categories](../categories/irq_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

@@ -1,9 +1,8 @@
 # vbmDrawTileMapE
 
 **Parameters:** address, address, byte, byte, byte, byte;  
-**Category:** VIC20 bitmap mode routines  
+**Category:** [VIC20 bitmap mode routines](../categories/vic20_bitmap_mode_routines.md)  
 **Compatibility:** VIC20  
 
 
-[Back to Categories](../categories/vic20_bitmap_mode_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

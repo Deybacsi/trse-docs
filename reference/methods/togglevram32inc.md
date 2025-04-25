@@ -1,9 +1,8 @@
 # ToggleVRAM32Inc
 
 **Parameters:** number;  
-**Category:** Charset routines  
+**Category:** [Charset routines](../categories/charset_routines.md)  
 **Compatibility:** NES  
 
 
-[Back to Categories](../categories/charset_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

@@ -1,9 +1,8 @@
 # SetBitmapLocation
 
 **Parameters:** number;  
-**Category:** Charset routines  
+**Category:** [Charset routines](../categories/charset_routines.md)  
 **Compatibility:** C128  
 
 
-[Back to Categories](../categories/charset_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

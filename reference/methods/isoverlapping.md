@@ -1,9 +1,8 @@
 # IsOverlapping
 
 **Parameters:** byte, byte, byte, byte, byte;  
-**Category:** Collision routines  
+**Category:** [Collision routines](../categories/collision_routines.md)  
 **Compatibility:** MOS6502  
 
 
-[Back to Categories](../categories/collision_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

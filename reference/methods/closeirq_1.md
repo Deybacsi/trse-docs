@@ -1,9 +1,8 @@
 # CloseIRQ
 
 **Parameters:** ;  
-**Category:** IRQ routines  
+**Category:** [IRQ routines](../categories/irq_routines.md)  
 **Compatibility:** PX86, M1ARM  
 
 
-[Back to Categories](../categories/irq_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

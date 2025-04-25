@@ -1,9 +1,8 @@
 # VDCWrite
 
 **Parameters:** byte, byte;  
-**Category:** IRQ routines  
+**Category:** [IRQ routines](../categories/irq_routines.md)  
 **Compatibility:** C128  
 
 
-[Back to Categories](../categories/irq_routines.md)  
 [Back to Methods List](../../SUMMARY.md)

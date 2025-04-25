@@ -1,9 +1,8 @@
 # KrillLoadCompressed
 
 **Parameters:** address;  
-**Category:** Charset routines  
+**Category:** [Charset routines](../categories/charset_routines.md)  
 **Compatibility:** C64, MEGA65, PLUS4  
 
 
-[Back to Categories](../categories/charset_routines.md)  
 [Back to Methods List](../../SUMMARY.md)
